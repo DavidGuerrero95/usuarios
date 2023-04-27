@@ -1,0 +1,21 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+	implementation project( ':kafka-client')
+	implementation project( ':handle-exceptions')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation project( ':mongo-repository')
+    implementation project( ':api-rest')
+    implementation project(':model')
+    implementation project(':usecase')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+}
+
+task explodedJar(type: Copy) {
+    with jar
+    into "${buildDir}/exploded"
+}
